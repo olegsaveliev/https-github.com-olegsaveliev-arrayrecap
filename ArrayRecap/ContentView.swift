@@ -24,32 +24,34 @@ struct ContentView: View {
         Text(message)
         
         Button("Add Card"){
-            
-            let ranNum = Int.random(in: 1...13)
-            let ranSuit = Int.random(in: 0...3)
-            
-            var deck = Card()
-            deck.number = ranNum
-            deck.suit = ranSuit
-            
-            let pathString = (String(deck.number) + "/" + String(deck.suit))
-            
-            if logginCard.contains(pathString) {
-                message = "Generated duplicate card."
-                
-            } else {
-                
-                logginCard.append(pathString)
-                cards.append(deck)
-                
-                let cardName = getCardName(deck.number)
-                let suitName = suits[deck.suit]
-                
-                message = "Generated \(cardName) of \(suitName)"
-            }
-            
+            addCard()
         }
         
+    }
+    
+    func addCard() {
+        let ranNum = Int.random(in: 1...13)
+        let ranSuit = Int.random(in: 0...3)
+        
+        var deck = Card()
+        deck.number = ranNum
+        deck.suit = ranSuit
+        
+        let pathString = (String(deck.number) + "/" + String(deck.suit))
+        
+        if logginCard.contains(pathString) {
+            message = "Generated duplicate card."
+            
+        } else {
+            
+            logginCard.append(pathString)
+            cards.append(deck)
+            
+            let cardName = getCardName(deck.number)
+            let suitName = suits[deck.suit]
+            
+            message = "Generated \(cardName) of \(suitName)"
+        }
     }
     func getCardName(_ cardNumber:Int)->String {
         if cardNumber == 1 {
