@@ -29,6 +29,7 @@ struct ContentView: View {
         
     }
     
+    
     func addCard() {
         let ranNum = Int.random(in: 1...13)
         let ranSuit = Int.random(in: 0...3)
